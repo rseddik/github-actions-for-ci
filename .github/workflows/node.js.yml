@@ -11,9 +11,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         os: [ubuntu-latest, windows-2016]
@@ -22,6 +20,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: npm install and build webpack
+      run: |
+        npm install
+        npm run build
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
